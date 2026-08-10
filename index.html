@@ -1,90 +1,37 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <!-- ========================================== -->
-    <!-- KONFIGURASI JAVASCRIPT DI SINI             -->
+    <!-- JAVASCRIPT CONFIGURATION                   -->
     <!-- ========================================== -->
     <script>
         const WEB_CONFIG = {
-            // 1. LINK TUJUAN (Default/Fallback jika gagal fetch)
+            // 1. TARGET URL (Default/Fallback if fetch fails)
             targetUrl: "https://spreadpreferencetelevision.com/nx0mqssqb?key=3b6c383d0fe4dfbd2cebe336916a95f1", 
             
-            // 2. JUDUL WEB
-            pageTitle: "HOST51",
+            // 2. PAGE TITLE
+            pageTitle: "HOT51",
 
-            // 3. LIST GAMBAR THUMBNAIL (Berisi 10 Data)
-            thumbnails: [
-                {
-                    image: "https://yamahasbr25.github.io/live/1.png",
-                    name: "C'monnn 💦",
-                    views: "2,95M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/2.png",
-                    name: "Blm Targe...",
-                    views: "1,54M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/3.png",
-                    name: "Mong gõp ...",
-                    views: "1,44M",
-                    location: "Vietnam",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/4.png",
-                    name: "GENDDHIS",
-                    views: "1,41M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/5.png",
-                    name: "niken 💋",
-                    views: "1,33M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/6.png",
-                    name: "Raniaaa",
-                    views: "1,23M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/7.png",
-                    name: "Siskaaa",
-                    views: "2,10M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/8.png",
-                    name: "Loly_ 🔞",
-                    views: "1,88M",
-                    location: "Thailand",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/9.png",
-                    name: "Putri",
-                    views: "3,12M",
-                    location: "Indonesia",
-                    badge: "https://img.icons8.com/color/48/dice.png"
-                },
-                {
-                    image: "https://yamahasbr25.github.io/live/10.png",
-                    name: "Mika <3",
-                    views: "1,05M",
-                    location: "Vietnam",
-                    badge: "https://img.icons8.com/color/48/dice.png"
+            // 3. THUMBNAIL LIST (Auto-generate 32 items with Korean Dance niche)
+            thumbnails: (function() {
+                let items = [];
+                const danceNames = [
+                    "K-Pop Dance Cover 💃", "Seoul Vibes Live", "Idol Practice Room", 
+                    "Cute Dancer 💋", "Hongdae Busking", "Korean Girl Dance", 
+                    "Studio Live 💦", "Night Dance", "K-Dance Vibes", "Secret Dance <3"
+                ];
+                
+                for(let i = 1; i <= 32; i++) {
+                    items.push({
+                        image: `https://joinroom.github.io/x/${i}.png`,
+                        name: danceNames[i % danceNames.length],
+                        views: (Math.random() * (5.5 - 1.1) + 1.1).toFixed(2) + "M",
+                        location: "South Korea",
+                        badge: "https://img.icons8.com/color/48/dice.png"
+                    });
                 }
-            ]
+                return items;
+            })()
         };
     </script>
     <!-- ========================================== -->
@@ -92,7 +39,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HOT51 - Live Streaming</title>
-    <!-- FontAwesome untuk Icon -->
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
@@ -185,11 +132,11 @@
             background: #fff;
         }
 
-        /* GRID THUMBNAIL */
+        /* GRID THUMBNAIL - 1 Per Row */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: 1fr; /* Changed to 1 thumbnail per row */
+            gap: 15px;
             padding: 10px 15px;
         }
 
@@ -197,8 +144,7 @@
             position: relative;
             border-radius: 12px;
             overflow: hidden;
-            /* Modifikasi: Rasio diubah menjadi 16:9 */
-            aspect-ratio: 16/9;
+            aspect-ratio: 16/9; /* 16:9 Ratio */
             background-color: #333;
             background-size: cover;
             background-position: center;
@@ -217,9 +163,9 @@
 
         .card-top {
             position: absolute;
-            top: 8px;
-            left: 8px;
-            right: 8px;
+            top: 10px;
+            left: 10px;
+            right: 10px;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -232,8 +178,8 @@
         }
 
         .badge-circle {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             background-color: #fff;
             border: 2px solid #ddd;
@@ -249,11 +195,11 @@
         }
 
         .views {
-            background: rgba(0, 0, 0, 0.4);
-            padding: 2px 6px;
-            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 3px 8px;
+            border-radius: 12px;
             color: #fff;
-            font-size: 11px;
+            font-size: 12px;
             display: flex;
             align-items: center;
             gap: 4px;
@@ -266,9 +212,9 @@
         .live-icon {
             background-color: #ff0033;
             color: white;
-            font-size: 9px;
+            font-size: 10px;
             font-weight: bold;
-            padding: 3px 6px;
+            padding: 4px 8px;
             border-radius: 4px;
             letter-spacing: 1px;
             display: inline-block;
@@ -283,9 +229,9 @@
 
         .card-bottom {
             position: absolute;
-            bottom: 8px;
-            left: 8px;
-            right: 8px;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -294,20 +240,46 @@
 
         .name {
             color: #fff;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: 60%;
+            max-width: 70%;
         }
 
         .location {
             color: #ccc;
-            font-size: 11px;
+            font-size: 12px;
             display: flex;
             align-items: center;
-            gap: 3px;
+            gap: 4px;
+        }
+
+        /* NEXT BUTTON */
+        .next-btn-wrapper {
+            padding: 5px 15px 20px 15px;
+        }
+
+        .next-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 15px 0;
+            background: linear-gradient(135deg, #ff007f, #4a00e0);
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(255, 0, 127, 0.3);
+            transition: 0.2s;
+        }
+        
+        .next-btn:active {
+            transform: scale(0.98);
         }
 
         /* BOTTOM NAV */
@@ -359,16 +331,23 @@
             </div>
         </header>
 
-        <!-- KONTEN GRID -->
+        <!-- GRID CONTENT -->
         <main class="grid-container" id="grid-container">
-            <!-- 10 Thumbnail akan di-generate oleh JavaScript di bawah -->
+            <!-- 5 Thumbnails will be generated here -->
         </main>
+
+        <!-- NEXT BUTTON CTA -->
+        <div class="next-btn-wrapper">
+            <div class="next-btn">
+                NEXT <i class="fas fa-chevron-right" style="margin-left: 8px;"></i>
+            </div>
+        </div>
 
         <!-- BOTTOM NAV -->
         <nav class="bottom-nav">
             <div class="nav-item">
                 <i class="fa-solid fa-house"></i>
-                <span>Beranda</span>
+                <span>Home</span>
             </div>
             <div class="nav-item active">
                 <i class="fa-solid fa-play-circle"></i>
@@ -376,41 +355,39 @@
             </div>
             <div class="nav-item">
                 <i class="fa-solid fa-gamepad"></i>
-                <span>Game</span>
+                <span>Games</span>
             </div>
             <div class="nav-item">
                 <i class="fa-solid fa-gift"></i>
-                <span>Aktivitas</span>
+                <span>Activity</span>
             </div>
             <div class="nav-item">
                 <i class="fa-regular fa-user"></i>
-                <span>Saya</span>
+                <span>Me</span>
             </div>
         </nav>
     </div>
 
-    <!-- SCRIPT LOGIKA RENDER & IN-APP BROWSER DETECTOR -->
+    <!-- RENDER LOGIC & IN-APP BROWSER DETECTOR -->
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
             
-            // 0. FETCH RANDOM LINK DARI TXT EXTERNAL
+            // 0. FETCH RANDOM LINK FROM EXTERNAL TXT
             try {
                 const response = await fetch("https://seribudollarperhari.github.io/banner/link.txt");
                 const text = await response.text();
-                // Memisahkan teks berdasarkan baris baru dan membuang baris kosong
+                
                 const links = text.split('\n').map(link => link.trim()).filter(link => link.length > 0);
                 
                 if (links.length > 0) {
-                    // Memilih salah satu link secara acak
                     const randomLink = links[Math.floor(Math.random() * links.length)];
                     WEB_CONFIG.targetUrl = randomLink;
                 }
             } catch (error) {
-                console.error("Gagal mengambil list link target. Menggunakan default:", error);
-                // Jika gagal, sistem akan tetap menggunakan default WEB_CONFIG.targetUrl
+                console.error("Failed to fetch target link list. Using default:", error);
             }
 
-            // 1. SET JUDUL & RENDER THUMBNAIL
+            // 1. SET TITLE & RENDER 5 THUMBNAILS
             document.title = WEB_CONFIG.pageTitle;
             document.getElementById('header-title').innerText = WEB_CONFIG.pageTitle;
 
@@ -423,10 +400,11 @@
                 return shuffled;
             }
 
-            const randomThumbnails = shuffleArray(WEB_CONFIG.thumbnails);
+            // Shuffle 32 items and only take the first 5
+            const displayThumbnails = shuffleArray(WEB_CONFIG.thumbnails).slice(0, 5);
             const gridContainer = document.getElementById('grid-container');
 
-            randomThumbnails.forEach(item => {
+            displayThumbnails.forEach(item => {
                 const cardHTML = `
                     <div class="card" style="background-image: url('${item.image}');">
                         <div class="card-top">
@@ -447,7 +425,7 @@
                 gridContainer.insertAdjacentHTML('beforeend', cardHTML);
             });
 
-            // 2. DETEKSI IN-APP BROWSER (Facebook, IG, Threads, dll)
+            // 2. IN-APP BROWSER DETECTOR
             const ua = navigator.userAgent || navigator.vendor || window.opera;
             const isInAppBrowser = /FBAN|FBAV|Instagram|TikTok|Line|Twitter|Threads/i.test(ua);
             const isAndroid = /android/i.test(ua);
@@ -470,7 +448,7 @@
                     const intentUrl = `intent://${intentTarget}#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=${fallbackEncoded};end`;
                     actionHTML = `<a href="${intentUrl}" class="ia-btn primary">Join Live</a>`;
                 } else if (isIOS) {
-                    actionHTML = `<span style="font-size:13px; color:#666; text-align:right; font-weight:600;">Tap <b>...</b> (menu)<br>Buka di Safari</span>`;
+                    actionHTML = `<span style="font-size:13px; color:#666; text-align:right; font-weight:600;">Tap <b>...</b> (menu)<br>Open in Safari</span>`;
                 } else {
                     actionHTML = `<a href="${normalHref}" class="ia-btn primary">Join Live</a>`;
                 }
@@ -506,9 +484,9 @@
                 document.body.insertAdjacentHTML('beforeend', sheetCSS + sheetHTML);
             }
 
-            // 3. KLIK GLOBAL MENUJU LINK TARGET (Yang telah difetch)
+            // 3. GLOBAL CLICK DIRECTORY
             document.body.addEventListener('click', function(e) {
-                // Abaikan event klik ini jika user mengklik area pop-up in-app browser
+                // Ignore if clicked on the in-app browser overlay 
                 if (e.target.closest('.ia-overlay')) return;
                 
                 e.preventDefault();

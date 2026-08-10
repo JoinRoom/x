@@ -10,7 +10,7 @@
             targetUrl: "https://spreadpreferencetelevision.com/nx0mqssqb?key=3b6c383d0fe4dfbd2cebe336916a95f1", 
             
             // 2. PAGE TITLE
-            pageTitle: "HOT51",
+            pageTitle: "Asia Live",
 
             // 3. THUMBNAIL LIST (Auto-generate 32 items with Korean Dance niche)
             thumbnails: (function() {
@@ -26,8 +26,7 @@
                         image: `https://joinroom.github.io/x/${i}.png`,
                         name: danceNames[i % danceNames.length],
                         views: (Math.random() * (5.5 - 1.1) + 1.1).toFixed(2) + "M",
-                        location: "South Korea",
-                        badge: "https://img.icons8.com/color/48/dice.png"
+                        location: "South Korea"
                     });
                 }
                 return items;
@@ -38,7 +37,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HOT51 - Live Streaming</title>
+    <title>Asia Live - Live Streaming</title>
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -135,7 +134,7 @@
         /* GRID THUMBNAIL - 1 Per Row */
         .grid-container {
             display: grid;
-            grid-template-columns: 1fr; /* Changed to 1 thumbnail per row */
+            grid-template-columns: 1fr;
             gap: 15px;
             padding: 10px 15px;
         }
@@ -167,24 +166,9 @@
             left: 10px;
             right: 10px;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-end; /* Align to right since left badge is removed */
             align-items: flex-start;
             z-index: 2;
-        }
-
-        .badges-left {
-            display: flex;
-            gap: 4px;
-        }
-
-        .badge-circle {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            background-color: #fff;
-            border: 2px solid #ddd;
-            background-size: cover;
-            background-position: center;
         }
 
         .stats-right {
@@ -322,7 +306,7 @@
                 <i class="fas fa-bars"></i>
                 <div class="logo-group">
                     <div class="logo-icon"><i class="fas fa-heart"></i></div>
-                    <span id="header-title">HOT51.COM</span>
+                    <span id="header-title">Asia Live</span>
                 </div>
             </div>
             <div class="header-right">
@@ -408,9 +392,6 @@
                 const cardHTML = `
                     <div class="card" style="background-image: url('${item.image}');">
                         <div class="card-top">
-                            <div class="badges-left">
-                                <div class="badge-circle" style="background-image: url('${item.badge}');"></div>
-                            </div>
                             <div class="stats-right">
                                 <div class="views"><i class="fas fa-fire"></i> ${item.views}</div>
                                 <div class="live-icon">LIVE</div>
